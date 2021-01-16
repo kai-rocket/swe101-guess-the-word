@@ -42,20 +42,20 @@ var getDefaultOutput = function () {
   // Show only numWrongGuesses letters in losingFigure by using JS's substring method
   // https://www.w3schools.com/jsref/jsref_substring.asp
   var losingFigureToDisplay = losingFigure.substring(0, numWrongGuesses);
-  return `The guessed word so far is ${getGuessedWord()}. <br>
-  You have ${numGuessesRemaining} more guesses. <br>
+  return `The guessed word so far is ${getGuessedWord()}.
+    You have ${numGuessesRemaining} more guesses.
   ${losingFigureToDisplay}`;
 };
 
 var main = function (input) {
   // If the user has won or lost, let them know to refresh to play again.
   if (userHasWon() || userHasLost()) {
-    return `${getDefaultOutput()} <br> Please refresh to play again.`;
+    return `${getDefaultOutput()} \n Please refresh to play again.`;
   }
 
   // If input is not a single letter, let the user know what to do.
   if (input.length != 1) {
-    return `This is a game of Guess The Word. Please guess 1 letter at a time. <br>
+    return `This is a game of Guess The Word. Please guess 1 letter at a time.
     ${getDefaultOutput()}`;
   }
 
@@ -75,12 +75,12 @@ var main = function (input) {
     }
 
     // Let the user know they guessed correctly.
-    var defaultCorrectGuessOutput = `You guessed right! <br> ${getDefaultOutput()}`;
+    var defaultCorrectGuessOutput = `You guessed right! \n ${getDefaultOutput()}`;
     // If the user has won, also let them know they won and to refresh to play again.
     if (userHasWon()) {
-      return `${defaultCorrectGuessOutput} <br>
-      Congratulations, you win! <br>
-      Please refresh to play again.`;
+      return `${defaultCorrectGuessOutput}
+        Congratulations, you win!
+        Please refresh to play again.`;
     }
     return defaultCorrectGuessOutput;
   }
@@ -89,10 +89,10 @@ var main = function (input) {
   if (!chosenSecretWordArray.includes(input)) {
     numWrongGuesses += 1;
     // Let the user know they guessed wrong.
-    var defaultWrongGuessOutput = `You guessed wrong. <br> ${getDefaultOutput()}`;
+    var defaultWrongGuessOutput = `You guessed wrong. \n ${getDefaultOutput()}`;
     // If the user has lost, also let them know they lost and to refresh to play again.
     if (userHasLost()) {
-      return `${defaultWrongGuessOutput} <br> Please refresh to play again.`;
+      return `${defaultWrongGuessOutput} \n Please refresh to play again.`;
     }
     return defaultWrongGuessOutput;
   }
@@ -100,7 +100,7 @@ var main = function (input) {
   // If the user has already guessed the current letter, let them know
   // and don't count it as a wrong guess.
   if (chosenSecretWordArray.includes(input) && guessedWordArray.includes(input)) {
-    return `You've guessed ${input} before! <br> ${getDefaultOutput()}`;
+    return `You've guessed ${input} before! \n ${getDefaultOutput()}`;
   }
 
   // Unless something unexpected happens, we should not reach the following return statement.
